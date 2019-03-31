@@ -1,0 +1,47 @@
+{
+    "name": "phpcollective/menumaker",
+    "description": "An elegant multi level menu system for the Laravel framework.",
+    "keywords": [
+        "laravel menu system",
+        "menu maker",
+        "menu tree"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Al Amin Chayan",
+            "email": "mail@chayan.me"
+        }
+    ],
+    "require": {
+        "php": "^7.1.3",
+        "kalnoy/nestedset": "^4.3",
+        "laravel/framework": "^5.7",
+        "laravelcollective/html": "^5.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpCollective\\MenuMaker\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpCollective\\MenuMaker\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "PhpCollective\\MenuMaker\\MenuServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
