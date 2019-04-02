@@ -1,0 +1,10 @@
+<?php
+
+namespace App\Http\Middleware;
+
+use PhpCollective\MenuMaker\Http\Middleware\VerifyMenuAuthorization as Middleware;
+
+class VerifyMenuAuthorization extends Middleware
+{
+
+}
