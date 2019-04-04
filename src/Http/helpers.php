@@ -74,3 +74,10 @@ if (! function_exists('valid_namespace')) {
         return str_replace('\\', '\\\\', $namespace);
     }
 }
+
+if (! function_exists('unauthorized')) {
+    function unauthorized()
+    {
+        return response()->view('menu-maker::errors.401');
+    }
+}

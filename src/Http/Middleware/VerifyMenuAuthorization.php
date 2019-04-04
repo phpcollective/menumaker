@@ -6,8 +6,6 @@ use Closure;
 
 class VerifyMenuAuthorization
 {
-    protected $enable = true;
-
     /**
      * Handle an incoming request.
      *
@@ -17,13 +15,13 @@ class VerifyMenuAuthorization
      */
     public function handle($request, Closure $next)
     {
-        if (! $this->enable
-            || is_excluded_route($request->route()->getActionName())
-            || $request->user()->admin()
-            || $request->user()->authorize($request)) {
+        if (! config('menu.enabled')
+            || is_excluded_route($request->route())
+            || optional($request->user())->admin()
+            || optional($request->user())->authorize($request)) {
             return $next($request);
         }
 
-        return abort(401);
+        return unauthorized();
     }
 }

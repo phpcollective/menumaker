@@ -68,7 +68,7 @@ class MenuServiceProvider extends ServiceProvider
         return [
             'namespace'  => 'PhpCollective\MenuMaker\Http\Controllers',
             'prefix'     => config('menu.path'),
-            'middleware' => ['web', 'auth'],
+            'middleware' => ['web', 'auth', 'menu'],
         ];
     }
 
@@ -105,8 +105,8 @@ class MenuServiceProvider extends ServiceProvider
             ], 'menu-config');
 
             $this->publishes([
-                __DIR__.'/../stubs/VerifyMenuAuthorization.stub' => app_path('Http/Middleware/VerifyMenuAuthorization.php'),
-            ], 'menu-middleware');
+                __DIR__.'/Storage/seeds' => database_path('seeds'),
+            ], 'menu-seeder');
         }
     }
 
@@ -126,5 +126,12 @@ class MenuServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__ . '/../config/menu.php', 'menu'
         );
+
+        $this->commands([
+            Console\ClearCommand::class,
+            Console\InstallCommand::class,
+            Console\PruneCommand::class,
+            Console\PublishCommand::class,
+        ]);
     }
 }

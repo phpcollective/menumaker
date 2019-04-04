@@ -3,6 +3,18 @@
 return [
 
     'path' => 'menu-maker',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Menu Maker Middleware Master Switch
+    |--------------------------------------------------------------------------
+    |
+    | This option may be used to disable Menu Authorization Middleware check
+    |
+    */
+
+    'enabled' => env('MENU_MIDDLEWARE_ENABLED', true),
+
     /*
     |--------------------------------------------------------------------------
     | Include Route List
