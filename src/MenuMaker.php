@@ -3,6 +3,7 @@
 namespace PhpCollective\MenuMaker;
 
 use Cache;
+use Illuminate\Database\Eloquent\Builder;
 use Route;
 use Kalnoy\Nestedset\Collection;
 use PhpCollective\MenuMaker\Storage\Role;
@@ -203,13 +204,7 @@ trait MenuMaker
 
     public function authorize($request)
     {
-        if(Permission::excludedActionList()->contains($request->route()->getActionName()))
-        {
-            return true;
-        }
-
-        $route = Permission::prepareAction($request->route());
-
+        $route = explode_route($request->route());
         return $this->whereHas('roles.menus.permissions', function ($query) use ($route) {
             $query->where('namespace', $route['namespace'])
                 ->where('controller', $route['controller'])

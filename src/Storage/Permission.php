@@ -66,7 +66,7 @@ class Permission extends Model
                 if (! self::routeMatch($route)) {
                     continue;
                 }
-                $filterRoutes[] = self::prepareAction($route);
+                $filterRoutes[] = explode_route($route);
             }
             return collect($filterRoutes);
         });
@@ -78,7 +78,7 @@ class Permission extends Model
             $excluded = collect();
             $routes = Route::getRoutes();
             foreach ($routes as $route) {
-                if (self::isWorkingRoute($route) && self::isExcludedRoute($route)) {
+                if (is_working_route($route) && is_excluded_route($route)) {
                     $excluded->push($route->getActionName());
                 }
             }
@@ -100,47 +100,6 @@ class Permission extends Model
 
     private static function routeMatch($route)
     {
-        return self::isWorkingRoute($route) && ! self::isExcludedRoute($route);
-    }
-
-    private static function isWorkingRoute($route)
-    {
-        return preg_match("/^App(.*)/i", trim($route->getActionName()));
-    }
-
-    private static function isExcludedRoute($route)
-    {
-        if (count(config('menu.exclude.namespaces')) > 0
-            && preg_match("/^App\\\\Http\\\\Controllers\\\\(" . implode('|',
-                    config('menu.exclude.namespaces')) . ")(.*)/", trim($route->getActionName())) > 0) {
-            return true;
-        }
-
-        if (count(config('menu.exclude.controllers')) > 0
-            && preg_match("/^App\\\\Http\\\\Controllers\\\\(" . implode('|',
-                    config('menu.exclude.controllers')) . ")@(.*)/", trim($route->getActionName())) > 0) {
-            return true;
-        }
-
-        if (count(config('menu.exclude.actions')) > 0
-            && preg_match("/^App\\\\Http\\\\Controllers\\\\(" . implode('|', config('menu.exclude.actions')) . ")/",
-                trim($route->getActionName())) > 0) {
-            return true;
-        }
-
-        return false;
-    }
-
-    public static function prepareAction($route)
-    {
-        $actionName = $route->getActionName();
-        $action = substr($actionName, strpos($actionName, '@') + 1);
-        $controller = substr($actionName, strrpos($actionName, '\\') + 1, -(strlen($action) + 1));
-        return [
-            'namespace'  => substr($actionName, 0, strrpos($actionName, '\\')),
-            'controller' => $controller,
-            'method'     => $route->methods[0],
-            'action'     => $action
-        ];
+        return is_working_route($route) && ! is_excluded_route($route);
     }
 }

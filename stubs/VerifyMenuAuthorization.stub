@@ -6,5 +6,10 @@ use PhpCollective\MenuMaker\Http\Middleware\VerifyMenuAuthorization as Middlewar
 
 class VerifyMenuAuthorization extends Middleware
 {
-
+    /**
+     * If the Middleware is Enable
+     *
+     * @var boolean
+     */
+    protected $enable = false;
 }
