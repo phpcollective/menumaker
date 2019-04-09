@@ -130,7 +130,6 @@ class MenuServiceProvider extends ServiceProvider
         $this->commands([
             Console\ClearCommand::class,
             Console\InstallCommand::class,
-            Console\PruneCommand::class,
             Console\PublishCommand::class,
         ]);
     }

@@ -23,6 +23,10 @@
         "phpunit/phpunit": "^7.0"
     },
     "autoload": {
+        "classmap": [
+            "src/Storage/seeds",
+            "src/Storage/factories"
+        ],
         "files": [
             "src/Http/helpers.php"
         ],

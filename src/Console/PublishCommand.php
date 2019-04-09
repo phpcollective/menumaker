@@ -11,14 +11,14 @@ class PublishCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'telescope:publish {--force : Overwrite any existing files}';
+    protected $signature = 'menu:publish {--force : Overwrite any existing files}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Publish all of the Telescope resources';
+    protected $description = 'Publish all of the Menu resources';
 
     /**
      * Execute the console command.
@@ -28,12 +28,12 @@ class PublishCommand extends Command
     public function handle()
     {
         $this->call('vendor:publish', [
-            '--tag' => 'telescope-config',
+            '--tag' => 'menu-config',
             '--force' => $this->option('force'),
         ]);
 
         $this->call('vendor:publish', [
-            '--tag' => 'telescope-assets',
+            '--tag' => 'menu-assets',
             '--force' => true,
         ]);
     }

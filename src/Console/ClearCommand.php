@@ -3,7 +3,8 @@
 namespace PhpCollective\MenuMaker\Console;
 
 use Illuminate\Console\Command;
-use Laravel\Telescope\Contracts\ClearableRepository;
+use Illuminate\Support\Facades\Cache;
+use PhpCollective\MenuMaker\Jobs\RemoveUserMenuCache;
 
 class ClearCommand extends Command
 {
@@ -12,25 +13,32 @@ class ClearCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'telescope:clear';
+    protected $signature = 'menu:clear';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Clear all entries from Telescope';
+    protected $description = 'Clear all cache from Menu Maker';
 
     /**
      * Execute the console command.
      *
-     * @param  \Laravel\Telescope\Contracts\ClearableRepository  $storage
      * @return void
      */
-    public function handle(ClearableRepository $storage)
+    public function handle()
     {
-        $storage->clear();
+        Cache::forget('routes');
+        Cache::forget('excluded-action-list');
+        Cache::forget('route-actions');
+        $model = resolve('userModel');
+        $model->chunk(100, function ($users) {
+            $users->each(function ($user) {
+                RemoveUserMenuCache::dispatch($user);
+            });
+        });
 
-        $this->info('Telescope entries cleared!');
+        $this->info('Menu caches cleared!');
     }
 }

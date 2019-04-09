@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use PhpCollective\MenuMaker\Storage\Menu;
@@ -32,6 +33,11 @@ class CreateMenusTable extends Migration
             $table->foreign('parent_id')->references('id')->on('pcmm_menus')->onDelete('restrict');
 
         });
+
+        Artisan::call('db:seed', [
+            '--class' => PcmmMenusTableSeeder::class,
+        ]);
+
     }
 
     /**
