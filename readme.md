@@ -40,20 +40,20 @@ After installing Menu Maker, publish its assets using the `menu:install` Artisan
 ``` bash
 $ php artisan menu:install
 ```
-Add `MenuMaker` trait in `User` model.
+Add `HasMenu` trait in `User` model.
 
 ``` php
 <?php
 
 namespace App;
 
-use PhpCollective\MenuMaker\MenuMaker;
+use PhpCollective\MenuMaker\HasMenu;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
-    use Notifiable, MenuMaker;
+    use Notifiable, HasMenu;
     
     ...
 }

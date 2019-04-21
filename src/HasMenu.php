@@ -10,7 +10,7 @@ use PhpCollective\MenuMaker\Storage\Role;
 use PhpCollective\MenuMaker\Storage\Menu;
 use PhpCollective\MenuMaker\Storage\Permission;
 
-trait MenuMaker
+trait HasMenu
 {
     protected $section;
 
