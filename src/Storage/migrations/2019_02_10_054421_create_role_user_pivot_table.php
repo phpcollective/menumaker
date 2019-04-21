@@ -14,13 +14,10 @@ class CreateRoleUserPivotTable extends Migration
     public function up()
     {
         Schema::create('pcmm_role_user', function (Blueprint $table) {
-            $table->integer('role_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->unsignedInteger('role_id');
+            $table->unsignedInteger('user_id');
 
             $table->primary(['role_id', 'user_id']);
-            $table->foreign('role_id')->references('id')->on('pcmm_roles')->onDelete('cascade');
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-
         });
     }
 
