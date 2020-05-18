@@ -92,7 +92,7 @@ class Role extends Model
      */
     public function users()
     {
-        return $this->belongsToMany(config('auth.providers.users.model'), 'pcmm_role_user');
+        return $this->belongsToMany(config('auth.providers.users.model'), 'pcmm_role_user', 'role_id', 'user_id');
     }
 
     /**

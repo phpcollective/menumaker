@@ -3,12 +3,10 @@
 namespace PhpCollective\MenuMaker;
 
 use Cache;
-use Illuminate\Database\Eloquent\Builder;
 use Route;
 use Kalnoy\Nestedset\Collection;
 use PhpCollective\MenuMaker\Storage\Role;
 use PhpCollective\MenuMaker\Storage\Menu;
-use PhpCollective\MenuMaker\Storage\Permission;
 
 trait MenuMaker
 {
@@ -19,7 +17,7 @@ trait MenuMaker
      */
     public function roles()
     {
-        return $this->belongsToMany(Role::class, 'pcmm_role_user');
+        return $this->belongsToMany(Role::class, 'pcmm_role_user', 'user_id', 'role_id');
     }
 
     public function menus($alease)
