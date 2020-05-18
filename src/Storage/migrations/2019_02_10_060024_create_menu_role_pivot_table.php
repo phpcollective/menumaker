@@ -18,8 +18,6 @@ class CreateMenuRolePivotTable extends Migration
             $table->integer('menu_id')->unsigned();
 
             $table->primary(['role_id', 'menu_id']);
-            $table->foreign('role_id')->references('id')->on('pcmm_roles')->onDelete('cascade');
-            $table->foreign('menu_id')->references('id')->on('pcmm_menus')->onDelete('cascade');
         });
     }
 
