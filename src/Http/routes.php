@@ -1,8 +1,7 @@
 <?php
 
 Route::name('menu-maker::')->group(function () {
-    Route::get('/', 'HomeController@index')->name('home');
-    Route::redirect('/', 'roles/assign');
+    Route::redirect('/', config('menu.path') . '/users');
 
     Route::put('roles/assign', 'RoleController@assign')->name('roles.assign');
     Route::get('roles/menus', 'RoleController@menus')->name('roles.menus');
