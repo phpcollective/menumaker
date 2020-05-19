@@ -36,5 +36,10 @@ class PublishCommand extends Command
             '--tag' => 'menu-assets',
             '--force' => true,
         ]);
+
+        $this->call('vendor:publish', [
+            '--tag' => 'menu-views',
+            '--force' => true,
+        ]);
     }
 }

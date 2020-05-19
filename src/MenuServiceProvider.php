@@ -3,6 +3,7 @@
 namespace PhpCollective\MenuMaker;
 
 use Blade;
+use View;
 use Route;
 use Illuminate\Support\ServiceProvider;
 use PhpCollective\MenuMaker\Storage\Menu;
@@ -37,9 +38,7 @@ class MenuServiceProvider extends ServiceProvider
         $this->registerMigrations();
         $this->registerPublishing();
 
-        $this->loadViewsFrom(
-            __DIR__ . '/../resources/views', 'menu-maker'
-        );
+        View::addNamespace('menu-maker', resource_path('views/menu-maker'));
 
         $this->loadTranslationsFrom(
             __DIR__ . '/../resources/lang', 'menu-maker'
@@ -107,6 +106,10 @@ class MenuServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__.'/Storage/seeds' => database_path('seeds'),
             ], 'menu-seeder');
+
+            $this->publishes([
+                __DIR__.'/../resources/views' => resource_path('views/menu-maker'),
+            ], 'menu-views');
         }
     }
 
