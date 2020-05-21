@@ -84,7 +84,7 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('js/menus.js') }}"></script>
+    <script src="{{ asset('/vendor/menu-maker/menus.js') }}"></script>
     <script>
         $(function () {
             $(document).on('change', '.parent', function (e) {
