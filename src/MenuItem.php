@@ -32,8 +32,13 @@ class MenuItem
         }
     }
 
-    public function url()
+    public function url() : string
     {
         return url($this->link);
+    }
+
+    public function hasChildren() : bool
+    {
+        return $this->children->count() > 0;
     }
 }

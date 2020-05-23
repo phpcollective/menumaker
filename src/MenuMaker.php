@@ -160,7 +160,7 @@ trait MenuMaker
 
                 $element = self::prepareMenuItem($node);
 
-                $children = self::buildTree($node->children, $node->id);
+                $children = self::buildTree($node->children()->visible()->get(), $node->id);
                 if ($children) {
                     $element['children'] = $children;
                 }
