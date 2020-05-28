@@ -6,7 +6,7 @@ use Illuminate\Database\Schema\Blueprint;
 use PhpCollective\MenuMaker\Storage\Menu;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMenusTable extends Migration
+class CreatePcmmMenusTable extends Migration
 {
     /**
      * Run the migrations.
