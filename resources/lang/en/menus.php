@@ -19,7 +19,7 @@ return [
     'parent_id.8' => 'Ancestor',
     'parent_id.9' => 'Ancestor',
     'name'        => 'Name',
-    'alease'      => 'Alease',
+    'alias'       => 'Alias',
     'routes'      => 'Route Name(s)',
     'link'        => 'Link',
     'icon'        => 'Icon',

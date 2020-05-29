@@ -6,7 +6,7 @@ namespace PhpCollective\MenuMaker;
 class MenuItem
 {
     public $name;
-    public $alease;
+    public $alias;
     public $routes;
     public $link;
     public $icon;

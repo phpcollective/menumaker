@@ -30,9 +30,9 @@
                         </div>
 
                         <div class="form-group row">
-                            {!! Form::label('alease', __('menu-maker::menus.alease'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+                            {!! Form::label('alias', __('menu-maker::menus.alias'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
                             <div class="col-md-6">
-                                {!! Form::text('alease', $menu->alease, ['class' => 'form-control-plaintext', 'readonly']) !!}
+                                {!! Form::text('alias', $menu->alias, ['class' => 'form-control-plaintext', 'readonly']) !!}
                             </div>
                         </div>
 

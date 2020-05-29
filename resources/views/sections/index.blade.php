@@ -21,7 +21,7 @@
                                 <tr>
                                     <th>{{ __('menu-maker::common.sl') }}</th>
                                     <th>{{ __('menu-maker::menus.name') }}</th>
-                                    <th>{{ __('menu-maker::menus.alease') }}</th>
+                                    <th>{{ __('menu-maker::menus.alias') }}</th>
                                     <th>{{ __('menu-maker::common.updated_at') }}</th>
                                     <th>{{ __('menu-maker::common.actions') }}</th>
                                 </tr>
@@ -32,7 +32,7 @@
                                     <tr class="{{ $x%2 == 0 ? 'even' : 'odd'}} gradeA">
                                         <td>{{ ++$x }}</td>
                                         <td>{{ $section->name }}</td>
-                                        <td>{{ $section->alease }}</td>
+                                        <td>{{ $section->alias }}</td>
                                         <td>{{ $section->updated_at->diffForHumans() }}</td>
                                         <td>
                                             <div class="btn-group" role="group" aria-label="Action Group">

@@ -19,7 +19,7 @@ class CreatePcmmMenusTable extends Migration
             $table->increments('id');
             $table->nestedSet();
             $table->string('name', 100);
-            $table->string('alease', 100)->unique();
+            $table->string('alias', 100)->unique();
             $table->json('routes')->nullable();
             $table->string('link', 255)->nullable();
             $table->string('icon', 100)->nullable();

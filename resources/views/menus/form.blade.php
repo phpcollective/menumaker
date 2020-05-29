@@ -19,10 +19,10 @@
 </div>
 
 <div class="form-group row required">
-    {!! Form::label('alease', __('menu-maker::menus.alease'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
+    {!! Form::label('alias', __('menu-maker::menus.alias'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     <div class="col-md-6">
-        {!! Form::text('alease', null, ['class' => $errors->has('alease') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
-        {!! $errors->first('alease', '<span class="invalid-feedback" role="alert"><strong>:message</strong></span>') !!}
+        {!! Form::text('alias', null, ['class' => $errors->has('alias') ? 'form-control is-invalid' : 'form-control', 'required']) !!}
+        {!! $errors->first('alias', '<span class="invalid-feedback" role="alert"><strong>:message</strong></span>') !!}
     </div>
 </div>
 

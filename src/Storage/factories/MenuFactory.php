@@ -7,7 +7,7 @@ use PhpCollective\MenuMaker\Storage\Menu;
 $factory->define(Menu::class, function (Faker $faker) {
     return [
         'name'   => $faker->word,
-        'alease' => $faker->unique()->slug,
+        'alias' => $faker->unique()->slug,
         'routes' => implode(',', $faker->words()),
         'link'   => $faker->url,
         'icon'   => 'fa-' . Str::random(5),
@@ -18,7 +18,7 @@ $factory->define(Menu::class, function (Faker $faker) {
 $factory->state(Menu::class, 'section', function ($faker) {
     return [
         'name'   => $faker->word,
-        'alease' => $faker->unique()->slug,
+        'alias' => $faker->unique()->slug,
         'routes' => null,
         'link'   => null,
         'icon'   => null,

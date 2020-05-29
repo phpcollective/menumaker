@@ -20,9 +20,9 @@ trait MenuMaker
         return $this->belongsToMany(Role::class, 'pcmm_role_user', 'user_id', 'role_id');
     }
 
-    public function menus($alease)
+    public function menus($alias)
     {
-        $this->section = Menu::whereAlease($alease)->first();
+        $this->section = Menu::whereAlias($alias)->first();
 
         if (! $this->section) {
             return collect([]);
@@ -177,7 +177,7 @@ trait MenuMaker
         return [
             'id'       => $node->id,
             'name'     => $node->name,
-            'alease'   => $node->alease,
+            'alias'   => $node->alias,
             'routes'   => $node->routes,
             'link'     => $node->link,
             'icon'     => $node->icon,
@@ -193,10 +193,10 @@ trait MenuMaker
         return $this->roles()->admin()->exists();
     }
 
-    public function approve($alease)
+    public function approve($alias)
     {
-        return $this->admin() || $this->whereHas('roles.menus', function ($query) use ($alease) {
-                $query->whereAlease($alease);
+        return $this->admin() || $this->whereHas('roles.menus', function ($query) use ($alias) {
+                $query->whereAlias($alias);
             })->exists();
     }
 

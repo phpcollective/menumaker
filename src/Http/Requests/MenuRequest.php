@@ -13,7 +13,7 @@ class MenuRequest extends Request
     {
         return [
             'name'       => 'required|min:3|max:100',
-            'alease'     => 'required|alpha_dash|min:3|max:100|unique:pcmm_menus,alease,' . $this->segment($this->segmentNo()),
+            'alias'     => 'required|alpha_dash|min:3|max:100|unique:pcmm_menus,alias,' . $this->segment($this->segmentNo()),
             'route_list' => 'nullable',
             'link'       => 'nullable|max:100',
             'icon'       => 'nullable|max:100',

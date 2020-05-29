@@ -37,7 +37,7 @@ class SectionController extends Controller
      */
     public function store(Request $request)
     {
-        Menu::create($request->only('name', 'alease'));
+        Menu::create($request->only('name', 'alias'));
         return redirect()
             ->route('menu-maker::sections.index')
             ->withMessage(__('menu-maker::alerts.created', ['name' => $request->name]));

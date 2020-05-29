@@ -65,7 +65,7 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         $data = $request->only([
-            'name', 'alease', 'link', 'icon', 'class', 'attr', 'privilege', 'visible'
+            'name', 'alias', 'link', 'icon', 'class', 'attr', 'privilege', 'visible'
         ]);
         $data['routes'] = $request->route_list;
         $data['parent_id'] = Menu::findParent();
@@ -113,7 +113,7 @@ class MenuController extends Controller
     public function update(Request $request, Menu $menu)
     {
         $data = $request->only([
-            'name', 'alease', 'link', 'icon', 'class', 'attr', 'privilege', 'visible'
+            'name', 'alias', 'link', 'icon', 'class', 'attr', 'privilege', 'visible'
         ]);
         $data['routes'] = $request->route_list;
         $data['parent_id'] = Menu::findParent();
