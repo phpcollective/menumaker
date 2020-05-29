@@ -36,7 +36,7 @@ class MenuObserver
     /**
      * Handle the Menu "deleting" event.
      *
-     * @param  \App\Menu  $menu
+     * @param  Menu  $menu
      * @return void
      */
     public function deleting(Menu $menu)
@@ -48,7 +48,7 @@ class MenuObserver
     /**
      * Handle User Cache delete.
      *
-     * @param  \App\Menu  $menu
+     * @param  Menu  $menu
      * @return void
      */
     private function removeUserCache(Menu $menu)
