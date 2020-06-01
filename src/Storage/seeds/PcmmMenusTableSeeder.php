@@ -118,6 +118,16 @@ class PcmmMenusTableSeeder extends Seeder
                                 'icon'    => '',
                                 'class'   => '',
                                 'visible' => false
+                            ],
+                            [
+                                'name' => 'Set Permission',
+                                'alias' => 'pcmm-role-menu',
+                                'routes' => 'menu-maker::roles.menus',
+                                'link' => config('menu.path') . '/roles/menus',
+                                'icon' => '',
+                                'class' => '',
+                                'privilege' => 'PROTECTED',
+                                'visible' => false
                             ]
                         ],
                     ],
