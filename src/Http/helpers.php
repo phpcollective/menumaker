@@ -26,6 +26,19 @@ if (! function_exists('is_excluded_route')) {
     }
 }
 
+if (! function_exists('is_public_route')) {
+    function is_public_route($route)
+    {
+        $route = explode_route($route);
+        $permissions = \PhpCollective\MenuMaker\Storage\Permission::publicRoutes();
+        return $permissions->where('namespace', $route['namespace'])
+            ->where('controller', $route['controller'])
+            ->where('method', $route['method'])
+            ->where('action', $route['action'])
+            ->count();
+    }
+}
+
 if (! function_exists('is_working_route')) {
     function is_working_route($route)
     {

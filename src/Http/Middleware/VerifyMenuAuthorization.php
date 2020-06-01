@@ -17,6 +17,7 @@ class VerifyMenuAuthorization
     {
         if (! config('menu.enabled')
             || is_excluded_route($request->route())
+            || is_public_route($request->route())
             || optional($request->user())->admin()
             || optional($request->user())->authorize($request)) {
             return $next($request);
