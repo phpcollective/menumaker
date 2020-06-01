@@ -159,6 +159,21 @@ class Menu extends Model
         return $query->whereVisible(true);
     }
 
+    public function scopePublic(Builder $query)
+    {
+        return $query->where('privilege', 'PUBLIC');
+    }
+
+    public function scopeProtected(Builder $query)
+    {
+        return $query->where('privilege', 'PROTECTED');
+    }
+
+    public function scopePrivate(Builder $query)
+    {
+        return $query->where('privilege', 'PRIVATE');
+    }
+
     /**
      * The permissions that associates with this menu.
      */
