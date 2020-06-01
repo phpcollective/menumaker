@@ -12,7 +12,7 @@ class RoleRequest extends Request
     public function rules()
     {
         return [
-            'name' => 'required|unique:pcmm_roles,name,'.$this->segment($this->segmentNo()),
+            'name' => 'required|unique:pcmm_roles,name,'.$this->segment($this->segmentNo(), 0),
         ];
     }
 }
