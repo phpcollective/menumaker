@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
@@ -24,6 +25,10 @@ class CreatePcmmPermissionsTable extends Migration
             $table->timestamps();
 
         });
+
+        Artisan::call('db:seed', [
+            '--class' => PcmmPermissionsTableSeeder::class,
+        ]);
     }
 
     /**
