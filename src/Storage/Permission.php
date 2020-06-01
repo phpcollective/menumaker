@@ -3,6 +3,7 @@
 namespace PhpCollective\MenuMaker\Storage;
 
 use Cache;
+use Illuminate\Database\Eloquent\Builder;
 use Route;
 use Illuminate\Database\Eloquent\Model;
 
@@ -86,6 +87,13 @@ class Permission extends Model
         });
     }
 
+    public static function publicRoutes()
+    {
+        return Cache::rememberForever('public-routes', function () {
+            return collect(self::public()->get()->toArray());
+        });
+    }
+
     public static function actions()
     {
         return Cache::rememberForever('route-actions', function () {
@@ -101,5 +109,23 @@ class Permission extends Model
     private static function routeMatch($route)
     {
         return is_working_route($route) && ! is_excluded_route($route);
+    }
+
+    public function scopeOfRoute(Builder $query, $route)
+    {
+        return $query->where(function ($query) use ($route) {
+            $query->where('namespace', $route['namespace'])
+                ->where('controller', $route['controller'])
+                ->where('method', $route['method'])
+                ->where('action', $route['action']);
+        });
+    }
+
+    public function scopePublic(Builder $query)
+    {
+        return $query->select('pcmm_permissions.*')
+            ->leftJoin('pcmm_menus', 'pcmm_menus.id', '=', 'pcmm_permissions.menu_id')
+            ->where('pcmm_menus.privilege', 'PUBLIC')
+            ->where('pcmm_permissions.method', 'GET');
     }
 }

@@ -91,7 +91,7 @@ trait MenuMaker
                     ->leftJoin($this->getTable(), 'pcmm_role_user.user_id', '=', $this->getTable() . '.id')
                     ->visible()
                     ->where(function ($query) {
-                        $query->wherePrivilege('PUBLIC')
+                        $query->public()
                             ->orWhere(function ($query) {
                                 $query->where('pcmm_menus.privilege', 'PROTECTED')
                                     ->where('pcmm_roles.is_active', true)
@@ -204,10 +204,7 @@ trait MenuMaker
     {
         $route = explode_route($request->route());
         return $this->whereHas('roles.menus.permissions', function ($query) use ($route) {
-            $query->where('namespace', $route['namespace'])
-                ->where('controller', $route['controller'])
-                ->where('method', $route['method'])
-                ->where('action', $route['action']);
+            return $query->ofRoute($route);
         })->exists();
     }
 }
