@@ -72,7 +72,7 @@
 <div class="form-group row required">
     {!! Form::label('privilege', __('menu-maker::menus.privilege'), ['class' => 'col-md-4 col-form-label text-md-right']) !!}
     <div class="col-md-6">
-        {!! Form::select('privilege', $privileges, \PhpCollective\MenuMaker\Storage\Menu::DEFAULT_PRIVILAGE, [
+        {!! Form::select('privilege', $privileges, null, [
             'class' => $errors->has('privilege') ? 'form-control is-invalid' : 'form-control',
             'required'
         ]) !!}
