@@ -155,7 +155,9 @@ class MenuController extends Controller
      */
     public function tree(Menu $node)
     {
-        $tree = Menu::descendantsOf($node)->toTree($node);
+        $tree = Menu::descendantsOf($node)
+            ->protected()
+            ->toTree($node);
         $selected = [];
         if(request()->has('g') && request('g') > 0)
         {
