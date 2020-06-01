@@ -32,6 +32,7 @@ class ClearCommand extends Command
         Cache::forget('routes');
         Cache::forget('excluded-action-list');
         Cache::forget('route-actions');
+        Cache::forget('public-routes');
         $model = resolve('userModel');
         $model->chunk(100, function ($users) {
             $users->each(function ($user) {

@@ -3,6 +3,7 @@
 namespace PhpCollective\MenuMaker\Observers;
 
 
+use Illuminate\Support\Facades\Cache;
 use PhpCollective\MenuMaker\Storage\Menu;
 use PhpCollective\MenuMaker\Storage\Role;
 use PhpCollective\MenuMaker\Jobs\RemoveUserMenuCache;
@@ -68,6 +69,8 @@ class MenuObserver
      */
     private function removeAdminCache()
     {
+        Cache::forget('public-routes');
+
         $admin = Role::with('users')->admin()->first();
         if(! $admin)
         {
