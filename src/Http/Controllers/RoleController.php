@@ -96,6 +96,13 @@ class RoleController extends Controller
     {
         $role = Role::withoutGlobalScopes()->findOrFail($id);
         $name = $role->name;
+        $users = $role->users()->count();
+        if ($users > 0) {
+            return redirect()
+                ->to(request('redirects_to'))
+                ->withErrors(__($name . ' role has ' . $users . ' active user(s).'));
+        }
+        
         $role->delete();
         return redirect()
             ->to(request('redirects_to'))
