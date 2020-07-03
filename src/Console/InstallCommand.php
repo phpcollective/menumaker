@@ -36,7 +36,9 @@ class InstallCommand extends Command
         $this->callSilent('vendor:publish', ['--tag' => 'menu-config']);
 
         $this->comment('Menu Database Files Migrating...');
-        $this->call('migrate');
+        $this->call('migrate', [
+            '--force'   => true
+        ]);
 
         $this->registerMenuAuthorizationMiddleware();
 

@@ -28,6 +28,7 @@ class CreatePcmmPermissionsTable extends Migration
 
         Artisan::call('db:seed', [
             '--class' => PcmmPermissionsTableSeeder::class,
+            '--force'   => true
         ]);
     }
 

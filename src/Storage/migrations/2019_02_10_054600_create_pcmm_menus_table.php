@@ -36,6 +36,7 @@ class CreatePcmmMenusTable extends Migration
 
         Artisan::call('db:seed', [
             '--class' => PcmmMenusTableSeeder::class,
+            '--force'   => true
         ]);
 
     }
